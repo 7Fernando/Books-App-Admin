@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import { getBooks } from "../../redux/actions/books";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
+  const allBooks = useSelector((state) => state.books.allBooks);
+
+  const [data, setData] = useState(allBooks);
+
+  useEffect(() => {
+    setData(allBooks);
+    return () => console.log(data);
+  }, [allBooks]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));

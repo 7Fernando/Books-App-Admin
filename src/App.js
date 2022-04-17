@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
@@ -27,9 +27,9 @@ function App() {
                 element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="products">
+            <Route path="books">
               <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
+              <Route path=":bookId" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}
@@ -37,7 +37,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
