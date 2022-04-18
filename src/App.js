@@ -3,7 +3,8 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import ListBooks from "./pages/listBooks/ListBooks";
 import ListUsers from "./pages/listUsers/ListUsers";
-import Single from "./pages/single/Single";
+import UserDetail from "./pages/userDetail/UserDetail";
+import BookDetail from "./pages/bookDetail/bookDetail";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
 import { useContext } from "react";
@@ -22,7 +23,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="users">
               <Route index element={<ListUsers />} />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":userId" element={<UserDetail />} />
               <Route
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
@@ -30,7 +31,7 @@ function App() {
             </Route>
             <Route path="books">
               <Route index element={<ListBooks />} />
-              <Route path=":bookId" element={<Single />} />
+              <Route path=":bookId" element={<BookDetail />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}

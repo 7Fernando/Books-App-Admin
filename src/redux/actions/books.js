@@ -10,6 +10,7 @@ export const typesBooks = {
   SORT_BOOKS: "SORT_BOOKS",
   SORT_SCORE: "SORT_SCORE",
   CLEAR_BOOK_DETAILS: "CLEAR_BOOK_DETAILS",
+  SHOW_SEARCH_BOOK: "SHOW_SEARCH_BOOK",
 };
 
 export const getBooks = () => {
@@ -29,7 +30,7 @@ export const getBooks = () => {
 export const searchBooks = (search) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${url}/books?name=${search}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books?name=${search}`);
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
         payload: data,
@@ -46,7 +47,7 @@ export const searchBooks = (search) => {
 export const getBookDetails = (id) => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`${url}/books/${id}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books/${id}`);
       return dispatch({
         type: typesBooks.GET_BOOK_DETAILS,
         payload: data,
@@ -87,6 +88,16 @@ export const clearState = () => {
   try {
     return {
       type: typesBooks.CLEAR_BOOK_DETAILS,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const showSearchBook = (payload) => {
+  try {
+    return {
+      type: typesBooks.SHOW_SEARCH_BOOK,
+      payload: payload
     };
   } catch (error) {
     console.error(error);

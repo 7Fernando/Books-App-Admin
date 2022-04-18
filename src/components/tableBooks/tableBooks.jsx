@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./tableBooks.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../datatablesource";
+import { bookColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getBooks } from "../../redux/actions/books";
+
 
 const Datatable = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,6 @@ const Datatable = () => {
 
   useEffect(() => {
     setData(allBooks);
-    return () => console.log(data);
   }, [allBooks]);
 
   const handleDelete = (id) => {
@@ -35,7 +35,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/books/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -64,10 +64,9 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={bookColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

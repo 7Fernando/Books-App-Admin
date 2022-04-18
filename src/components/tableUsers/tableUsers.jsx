@@ -8,7 +8,18 @@ import { useDispatch } from "react-redux";
 // import { getUsers } from "../../redux/actions/users";
 
 const Datatable = () => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
+  // const allUsers = useSelector((state) => state.users.allUsers);
+
   const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   setData(allUsers);
+  // }, [allUsers]);
+
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
