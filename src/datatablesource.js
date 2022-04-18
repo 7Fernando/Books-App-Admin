@@ -1,18 +1,18 @@
 export const userColumns = [
   { field: "id", headerName: "ID", width: 100 },
   {
-    field: "books",
-    headerName: "Book",
-    width: 230,
+    field: "img",
+    headerName: "Img",
+    width: 100,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.cover} alt="avatar" />
-          {params.row.title}
         </div>
       );
     },
   },
+  { field: "title", headerName: "Title", width: 200 },
   {
     field: "views",
     headerName: "Views",
@@ -22,10 +22,10 @@ export const userColumns = [
     field: "like",
     headerName: "Like",
     width: 100,
-  }, 
+  },
   {
     field: "dislike",
     headerName: "Dislike",
     width: 100,
-  }
+  },
 ];

@@ -1,7 +1,8 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
+import ListBooks from "./pages/listBooks/ListBooks";
+import ListUsers from "./pages/listUsers/ListUsers";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
@@ -20,7 +21,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="users">
-              <Route index element={<List />} />
+              <Route index element={<ListUsers />} />
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
@@ -28,7 +29,7 @@ function App() {
               />
             </Route>
             <Route path="books">
-              <Route index element={<List />} />
+              <Route index element={<ListBooks />} />
               <Route path=":bookId" element={<Single />} />
               <Route
                 path="new"

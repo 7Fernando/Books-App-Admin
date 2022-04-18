@@ -1,8 +1,8 @@
 import React from "react";
-import "./list.scss";
+import "./ListBooks.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import Datatable from "../../components/datatable/Datatable";
+import TableBooks from "../../components/tableBooks/tableBooks";
 
 const List = () => {
   return (
@@ -10,7 +10,7 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable />
+        <TableBooks />
       </div>
     </div>
   );
