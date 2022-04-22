@@ -5,20 +5,20 @@ import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-// import { getUsers } from "../../redux/actions/users";
+ import { getUsers } from "../../redux/actions/user";
 
 const Datatable = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getUsers());
-  // }, [dispatch]);
-  // const allUsers = useSelector((state) => state.users.allUsers);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+ }, [dispatch]);
+  const allUser = useSelector((state) => state.user.allUser);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(allUser);
 
-  // useEffect(() => {
-  //   setData(allUsers);
-  // }, [allUsers]);
+   useEffect(() => {
+     setData(allUser);
+   }, [allUser]);
 
 
   const handleDelete = (id) => {
@@ -47,10 +47,16 @@ const Datatable = () => {
       },
     },
   ];
+
+
+
+
+
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
+      
         <Link
           to="/users/new"
           style={{ textDecoration: "none" }}
