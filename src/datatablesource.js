@@ -32,26 +32,26 @@ export const bookColumns = [
 export const userColumns = [
   { field: "id", headerName: "ID", width: 100 },
   {
-    field: "img",
-    headerName: "Img",
+    field: "picture",
+    headerName: "Picture",
     width: 100,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.cover} alt="avatar" />
+          <img className="cellImg" src={params.row.picture} alt="avatar" />
         </div>
       );
     },
   },
-  { field: "title", headerName: "Title", width: 200 },
+  { field: "name", headerName: "Name", width: 200 },
   {
-    field: "views",
-    headerName: "Views",
+    field: "mail",
+    headerName: "Mail",
     width: 100,
   },
   {
-    field: "like",
-    headerName: "Like",
+    field: "role",
+    headerName: "Role",
     width: 100,
   },
   {

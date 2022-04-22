@@ -5,7 +5,7 @@ import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
- import { getUsers } from "../../redux/actions/user";
+ import { deleteUser, getUsers } from "../../redux/actions/user";
 
 const Datatable = () => {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const Datatable = () => {
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
+    dispatch(deleteUser(id))
   };
 
   const actionColumn = [
@@ -33,7 +34,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/users/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
