@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getBooks } from "../../redux/actions/books";
 import { getUsers } from "../../redux/actions/user";
-
+import { deleteBook } from "../../redux/actions/books";
 
 const Datatable = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const Datatable = () => {
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
+    dispatch(deleteBook(id));
   };
 
   const actionColumn = [

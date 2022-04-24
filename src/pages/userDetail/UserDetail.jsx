@@ -47,7 +47,7 @@ const Single = () => {
                 <div className="detailItem">
                   <span className="itemKey">Favorites:</span>
                   <span className="itemValue">
-                  {user.favorite.length ? user.favorite.map((b)=> "bookId: " + b.bookId + " ") : "No favorites"}
+                  {user.favorite ? user.favorite.map((b)=> "bookId: " + b.bookId + " ") : "No favorites"}
                   </span>
                 </div>
                 

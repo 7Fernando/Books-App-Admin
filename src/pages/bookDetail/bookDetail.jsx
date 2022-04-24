@@ -26,7 +26,7 @@ const BookDetail = () => {
       <Sidebar />
       <div className="singleContainer">
         <Navbar />
-        <Detail bookDetails={bookDetails}/>
+        <Detail bookDetails={bookDetails} id={id}/>
       </div>
     </div>
   );
