@@ -1,11 +1,12 @@
 import "./bookDetail.scss";
 
-
 export default function Detail({bookDetails}) {
+
+
   return (
     <div className="top">
       <div className="left">
-        <div className="editButton">Delete</div>
+     
         <h1 className="title">Information</h1>
         <div className="item">
           <img src={`${bookDetails?.cover}`} alt="" className="itemImg" />

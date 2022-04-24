@@ -76,6 +76,9 @@ cases[typesBooks.POST_BOOK] = (initialState, payload) => ({
   ...initialState
 });
 
+cases[typesBooks.DELETE_BOOK] = (initialState, payload) => ({
+  ...initialState
+});
 export default function booksReducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
 }
