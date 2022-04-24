@@ -11,7 +11,8 @@ export const typesBooks = {
   SORT_SCORE: "SORT_SCORE",
   CLEAR_BOOK_DETAILS: "CLEAR_BOOK_DETAILS",
   SHOW_SEARCH_BOOK: "SHOW_SEARCH_BOOK",
-  POST_BOOK: 'POST_BOOK'
+  POST_BOOK: 'POST_BOOK',
+  DELETE_BOOK: 'DELETE_BOOK'
 };
 
 export const getBooks = () => {
@@ -112,6 +113,21 @@ export const postBook = (payload) => {
       .then(response => {
         dispatch({
           type: typesBooks.POST_BOOK,
+          payload: response.data
+        });
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
+export const deleteBook = (id) => {
+  return (dispatch) => {
+    return axios.delete(`http://localhost:3001/api/books/${id}`)
+      .then(response => {
+        dispatch({
+          type: typesBooks.DELETE_BOOK,
           payload: response.data
         });
       })

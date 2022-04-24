@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getBooks } from "../../redux/actions/books";
+<<<<<<< HEAD
 
 
+=======
+import { getUsers } from "../../redux/actions/user";
+import { deleteBook } from "../../redux/actions/books";
+>>>>>>> 4caf39092e01c7d2f56781ab1e023caf01772d02
 
 const Datatable = () => {
   const dispatch = useDispatch();
@@ -26,6 +31,7 @@ const Datatable = () => {
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
+    dispatch(deleteBook(id));
   };
 
   const actionColumn = [
