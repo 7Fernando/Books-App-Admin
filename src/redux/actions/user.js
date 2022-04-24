@@ -18,7 +18,7 @@ export const typesUser = {
 
   export const getUsers = () =>{
     try{ return async (dispatch) =>{
-      const {data} = await axios.get(`${BASE_URL}/users`)
+      const {data} = await axios.get('http://localhost:3001/api/users')
       console.log('data',data)
       return dispatch({
         type: typesUser.GET_ALL_USERS,
@@ -32,7 +32,7 @@ export const typesUser = {
 
   export const postUser = (user) => {
     return (dispatch) => {
-      return axios.post(`${BASE_URL}/users`, user, config)
+      return axios.post('http://localhost:3001/api/users', user, config)
         .then(response => {
           dispatch({
             type: typesUser.POST_USER,
@@ -47,7 +47,7 @@ export const typesUser = {
   export const getUserById = (id) => {
     try {
       return async (dispatch) => {
-        const { data } = await axios.get(`${BASE_URL}/users/${id}`);
+        const { data } = await axios.get(`http://localhost:3001/api/users/${id}`);
         return dispatch({
           type: typesUser.GET_USER_BY_ID,
           payload: data
@@ -61,7 +61,7 @@ export const typesUser = {
   export const deleteUser = (id) => {
     try {
       return async (dispatch) =>{
-        const {data} = await axios.delete(`${BASE_URL}/users/${id}`)
+        const {data} = await axios.delete(`http://localhost:3001/api/users/${id}`)
         return dispatch({
           type: typesUser.DELETE_USER,
           payload: data

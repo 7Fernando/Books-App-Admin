@@ -72,6 +72,10 @@ cases[typesBooks.SHOW_SEARCH_BOOK] = (initialState, payload) => ({
   showSearchBook: !initialState.showSearchBook ? payload : !payload,
 });
 
+cases[typesBooks.POST_BOOK] = (initialState, payload) => ({
+  ...initialState
+});
+
 export default function booksReducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
 }
