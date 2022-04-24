@@ -10,6 +10,7 @@ import List from "../../components/table/Table";
   import { useEffect } from "react";
   import { useParams } from "react-router-dom";
 
+
 const Single = () => {
   
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Single = () => {
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="top">
           <div className="left">
             <div className="editButton">Change Role</div>
@@ -60,10 +61,7 @@ const Single = () => {
             <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
           </div>
         </div>
-        <div className="bottom">
-          <h1 className="title">Last Transactions</h1>
-          <List />
-        </div>
+      
       </div>
     </div>
   );
