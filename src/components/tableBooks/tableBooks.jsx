@@ -53,9 +53,9 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
+        List of Book
         <Link
-          to="/users/new"
+          to="/books/new"
           style={{ textDecoration: "none" }}
           className="link"
         >

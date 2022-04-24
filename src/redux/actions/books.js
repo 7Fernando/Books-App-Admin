@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = process.env.VITE_BASE_URL;
+//const url = process.env.VITE_BASE_URL;
 
 export const typesBooks = {
   GET_ALL_BOOKS: "GET_ALL_BOOKS",
@@ -11,6 +11,7 @@ export const typesBooks = {
   SORT_SCORE: "SORT_SCORE",
   CLEAR_BOOK_DETAILS: "CLEAR_BOOK_DETAILS",
   SHOW_SEARCH_BOOK: "SHOW_SEARCH_BOOK",
+  POST_BOOK: 'POST_BOOK'
 };
 
 export const getBooks = () => {
@@ -103,3 +104,19 @@ export const showSearchBook = (payload) => {
     console.error(error);
   }
 };
+
+
+export const postBook = (payload) => {
+  return (dispatch) => {
+    return axios.post('http://localhost:3001/api/books', payload)
+      .then(response => {
+        dispatch({
+          type: typesBooks.POST_BOOK,
+          payload: response.data
+        });
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}

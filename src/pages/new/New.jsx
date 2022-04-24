@@ -2,49 +2,90 @@ import React, { useState } from "react";
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import {postBook} from "../../redux/actions/books";
+import { useDispatch } from "react-redux";
 
-const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+
+const New = () => {
+  const dispatch = useDispatch()
+  const [input, setInput] = useState({
+    title:'',
+    author:'',
+    topic:'',
+    epub:'',
+    cover:'',
+    language: '',
+
+ })
+
+ function handleSubmit(e){
+  //e.preventDefault(),
+  console.log(input)
+  dispatch(postBook(input))
+  alert('New Book Created')
+  setInput({
+    title:'',
+    author:'',
+    topic:'',
+    epub:'',
+    cover:'',
+    language: '',
+  })
+}
+
+function handleChange(e){
+  setInput({
+      ...input, 
+      [e.target.name] : e.target.value
+  })
+  
+}
+
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>New Book</h1>
         </div>
         <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
+          <div className="left"> 
           </div>
           <div className="right">
-            <form>
+            <form onSubmit={(e)=> handleSubmit(e)}>
               <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                />
+              <label>Title</label>
+              <input type='text' name='title' value={input.title} onChange={handleChange}/>
               </div>
-              {inputs?.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
-                </div>
-              ))}
-              <button>Send</button>
+              <div className="formInput">
+              <label>Author</label>
+              <input type='text' name='author'  value={input.author} onChange={handleChange}/>
+              </div>
+              <div className="formInput">
+              <label>Language</label>
+              <input type='text' name='language'  value={input.language}onChange={handleChange} />
+              </div>
+              <div className="formInput">
+              <label>Topic</label>
+              <input type='text' name='topic'  value={input.topic}  onChange={handleChange}/>
+              </div>
+              <div className="formInput">
+              <label>Epub</label>
+              <input type='text' name='epub'  value={input.epub} onChange={handleChange}/>
+              </div>
+              <div className="formInput">
+              <label>Cover</label>
+              <input type='text' name='cover'  value={input.cover} onChange={handleChange}/>
+              </div>
+
+                     <button  type="submit" value="Submit"
+                           disabled={
+                           !input.title ||
+                           !input.author ||
+                           !input.language||  
+                           !input.topic
+                           }>Send</button>
             </form>
           </div>
         </div>
