@@ -56,16 +56,7 @@ const Datatable = () => {
 
   return (
     <div className="datatable">
-      <div className="datatableTitle">
       
-        <Link
-          to="/users/new"
-          style={{ textDecoration: "none" }}
-          className="link"
-        >
-          Add New
-        </Link>
-      </div>
       <DataGrid
         className="datagrid"
         rows={data}

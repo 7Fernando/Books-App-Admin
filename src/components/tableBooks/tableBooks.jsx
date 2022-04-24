@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getBooks } from "../../redux/actions/books";
-import { getUsers } from "../../redux/actions/user";
 import { deleteBook } from "../../redux/actions/books";
+
 
 const Datatable = () => {
   const dispatch = useDispatch();
