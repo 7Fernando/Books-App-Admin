@@ -30,6 +30,22 @@ export default function Detail({bookDetails}) {
               <span className="itemKey">Dislikes:</span>
               <span className="itemValue">{bookDetails?.dislike}</span>
             </div>
+            <div className="detailItem">
+              <span className="itemKey">Epub:</span>
+              <span className="itemValue">{bookDetails?.epub}</span>
+            </div>
+            {
+              bookDetails?.topic && (
+            <div className="detailItem">
+              <span className="itemKey">Topics:</span>
+              <span className="itemValue">
+                {bookDetails?.topic?.map((lan) => lan.name)}
+              </span>
+            </div>
+              )
+            }
+
+
             {
               bookDetails?.language && (
             <div className="detailItem">

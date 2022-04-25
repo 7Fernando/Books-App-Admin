@@ -5,7 +5,7 @@ import { bookColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getBooks } from "../../redux/actions/books";
+import { getBooksAdmin } from "../../redux/actions/books";
 import { deleteBook } from "../../redux/actions/books";
 
 
@@ -13,7 +13,7 @@ const Datatable = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooks());
+    dispatch(getBooksAdmin());
   }, [dispatch]);
 
   const allBooks = useSelector((state) => state.books.allBooks);
