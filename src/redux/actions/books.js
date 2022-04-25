@@ -124,7 +124,7 @@ export const postBook = (payload) => {
 
 export const deleteBook = (id) => {
   return (dispatch) => {
-    return axios.delete(`http://localhost:3001/api/books/${id}`)
+    return axios.delete(`http://localhost:3001/api/books/user/admin/${id}`)
       .then(response => {
         dispatch({
           type: typesBooks.DELETE_BOOK,
