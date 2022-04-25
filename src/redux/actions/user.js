@@ -61,7 +61,7 @@ export const typesUser = {
   export const deleteUser = (id) => {
     try {
       return async (dispatch) =>{
-        const {data} = await axios.delete(`http://localhost:3001/api/users/${id}`)
+        const {data} = await axios.delete(`http://localhost:3001/api/users/admin/${id}`)
         return dispatch({
           type: typesUser.DELETE_USER,
           payload: data
