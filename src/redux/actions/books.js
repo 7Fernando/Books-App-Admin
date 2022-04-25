@@ -40,7 +40,7 @@ export const searchBooks = (search) => {
     } catch (error) {
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
-        payload: ["No books found"],
+        payload: [],
       });
     }
   };
