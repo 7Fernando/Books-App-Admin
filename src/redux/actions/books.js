@@ -15,10 +15,10 @@ export const typesBooks = {
   DELETE_BOOK: 'DELETE_BOOK'
 };
 
-export const getBooks = () => {
+export const getBooksAdmin = () => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get('http://localhost:3001/api/admin');
+      const { data } = await axios.get('http://localhost:3001/api/books/user/admin');
       return dispatch({
         type: typesBooks.GET_ALL_BOOKS,
         payload: data,
@@ -32,7 +32,7 @@ export const getBooks = () => {
 export const searchBooks = (search) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/api/books?name=${search}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin?name=${search}`);
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
         payload: data,
@@ -41,7 +41,7 @@ export const searchBooks = (search) => {
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
         payload: [],
-      });
+      }, console.log('entro al catch', dispatch) );
     }
   };
 };
@@ -49,7 +49,7 @@ export const searchBooks = (search) => {
 export const getBookDetails = (id) => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`http://localhost:3001/api/books/${id}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin/${id}`);
       return dispatch({
         type: typesBooks.GET_BOOK_DETAILS,
         payload: data,
