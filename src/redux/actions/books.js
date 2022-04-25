@@ -18,7 +18,7 @@ export const typesBooks = {
 export const getBooks = () => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`http://localhost:3001/api/books`);
+      const { data } = await axios.get('http://localhost:3001/api/admin');
       return dispatch({
         type: typesBooks.GET_ALL_BOOKS,
         payload: data,
@@ -40,7 +40,7 @@ export const searchBooks = (search) => {
     } catch (error) {
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
-        payload: ["No books found"],
+        payload: [],
       });
     }
   };

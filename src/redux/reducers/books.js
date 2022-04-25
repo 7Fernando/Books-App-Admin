@@ -60,7 +60,7 @@ cases[typesBooks.SORT_SCORE] = (initialState, payload) => {
 
 cases[typesBooks.SEARCH_BOOKS] = (initialState, payload) => ({
   ...initialState,
-  searchBook: [...payload],
+ // searchBook: [...payload],
   allBooks: [...payload],
 });
 cases[typesBooks.CLEAR_BOOK_DETAILS] = (initialState, payload) => ({
