@@ -6,7 +6,7 @@ import ListUsers from "./pages/listUsers/ListUsers";
 import UserDetail from "./pages/userDetail/UserDetail";
 import BookDetail from "./pages/bookDetail/bookDetail";
 import New from "./pages/new/New";
-import {  userInputs } from "./formSource";
+import ListMails from "./pages/listMails/listMails"
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import "./theme/dark.scss";
@@ -33,6 +33,13 @@ function App() {
               <Route path="new" element={<New  title="Add New Book" />}
               />
             </Route>
+            <Route path="newletter">
+               <Route index element={<ListMails />} /> 
+             
+              {/* <Route path="new" element={<New  title="Add New Book" />} />*/}
+              
+            </Route>
+
           </Route>
         </Routes>
       </HashRouter>

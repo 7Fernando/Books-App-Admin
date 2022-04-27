@@ -19,3 +19,4 @@ export const userInputs = [
     type: "role",
   }
 ];
+

@@ -1,8 +1,8 @@
 import React from "react";
-import "./ListUsers.scss";
+//import "./ListUsers.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
-
-import TableUsers from "../../components/tableUsers/tableUsers";
+import FormNewsletter from "../../components/FormNewsletter/FormNewsletter";
+import TableMails from "../../components/tableMails/tableMails";
 
 
 const List = () => {
@@ -12,7 +12,8 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         {/* <Navbar /> */}
-        <TableUsers />
+        <TableMails />
+        <FormNewsletter />
       </div>
     </div>
   );
