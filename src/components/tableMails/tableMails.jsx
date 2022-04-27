@@ -20,7 +20,6 @@ const Datatable = () => {
      setData(allUser);
    }, [allUser]);
 
-   //console.log('mails list', data.map((m)=> m.mail))
 
   return (
     <div className="datatable">
@@ -32,7 +31,12 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
+
+        //onRowClick={handleSelect}
+        
       />
+
+     
     </div>
   );
 };

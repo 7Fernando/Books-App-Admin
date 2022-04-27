@@ -2,6 +2,23 @@ import axios from "axios";
 
 //const url = process.env.VITE_BASE_URL;
 
+
+const token = window.localStorage.getItem("token");
+
+const user = localStorage.getItem("user");
+ const config = {
+   headers: {
+     Authorization: token,
+  },
+ };
+
+
+ const authorizationAdmin = {
+  headers: { authorization: `Bearer ${token}`, user: user },
+};
+
+
+
 export const typesBooks = {
   GET_ALL_BOOKS: "GET_ALL_BOOKS",
   SEARCH_BOOKS: "SEARCH_BOOKS",
@@ -18,7 +35,7 @@ export const typesBooks = {
 export const getBooksAdmin = () => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get('http://localhost:3001/api/books/user/admin');
+      const { data } = await axios.get('http://localhost:3001/api/books/user/admin', authorizationAdmin);
       return dispatch({
         type: typesBooks.GET_ALL_BOOKS,
         payload: data,
@@ -32,7 +49,7 @@ export const getBooksAdmin = () => {
 export const searchBooks = (search) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin?name=${search}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin?name=${search}`, authorizationAdmin);
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
         payload: data,
@@ -49,7 +66,7 @@ export const searchBooks = (search) => {
 export const getBookDetails = (id) => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin/${id}`);
+      const { data } = await axios.get(`http://localhost:3001/api/books/user/admin/${id}`, authorizationAdmin);
       return dispatch({
         type: typesBooks.GET_BOOK_DETAILS,
         payload: data,
