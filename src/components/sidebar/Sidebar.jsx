@@ -38,6 +38,12 @@ const Sidebar = () => {
               <span>Books</span>
             </li>
           </Link>
+          <Link to="/newletter" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>NewsLetter</span>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="bottom">

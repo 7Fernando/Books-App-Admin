@@ -60,3 +60,26 @@ export const userColumns = [
     width: 100,
   },
 ];
+
+
+export const userMail = [
+  { field: "id", headerName: "ID", width: 100 },
+  {
+    field: "picture",
+    headerName: "Picture",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.picture} alt="avatar" />
+        </div>
+      );
+    },
+  },
+  { field: "name", headerName: "Name", width: 200 },
+  {
+    field: "mail",
+    headerName: "Mail",
+    width: 300,
+  },
+];
