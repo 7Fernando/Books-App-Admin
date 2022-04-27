@@ -20,10 +20,6 @@ const Datatable = () => {
      setData(allUser);
    }, [allUser]);
 
-  //  function handleSelect (e){
-  //    e.preventDefault()
-  //    dispatch(allUser.map((e)=> e.mail)
-  //  }
 
   return (
     <div className="datatable">
@@ -35,6 +31,7 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
+
         //onRowClick={handleSelect}
         
       />

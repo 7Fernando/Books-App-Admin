@@ -15,7 +15,7 @@ const [data, setData] = useState(allMails);
  
 
     const [input, setInput] = useState({
-        mail : data,
+        mail : '',
         message : ''
     })
 
