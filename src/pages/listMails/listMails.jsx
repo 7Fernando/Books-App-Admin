@@ -2,7 +2,7 @@ import React from "react";
 //import "./ListUsers.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import FormNewsletter from "../../components/FormNewsletter/FormNewsletter";
-import TableMails from "../../components/tableMails/tableMails";
+//import TableMails from "../../components/tableMails/tableMails";
 
 
 const List = () => {
@@ -12,7 +12,7 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         {/* <Navbar /> */}
-        <TableMails />
+        {/* <TableMails /> */}
         <FormNewsletter />
       </div>
     </div>

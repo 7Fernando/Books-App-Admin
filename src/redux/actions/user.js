@@ -94,10 +94,10 @@ export const typesUser = {
   }
 
 
-  export const mailUsers = (mail, message)=>{
+  export const mailUsers = (input)=>{
    
     return (dispatch) => {
-      return axios.post('http://localhost:3001/api/users/admin/mail', mail,message, authorizationAdmin)
+      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin)
       
         .then(response => {
          

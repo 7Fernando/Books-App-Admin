@@ -8,14 +8,15 @@ import { useDispatch } from "react-redux";
  import {getUsers } from "../../redux/actions/user";
 
 const Datatable = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
  }, [dispatch]);
   const allUser = useSelector((state) => state.user.allUser);
-
+ //const [selection, setSelection] = use
   const [data, setData] = useState(allUser);
-
+  const [select, setSelection] = useState([])
    useEffect(() => {
      setData(allUser);
    }, [allUser]);
@@ -35,11 +36,15 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
-        //onRowClick={handleSelect}
+        onSelectionChange={(newSelection) => {
+          setSelection(newSelection.rows);
+          console.log('seleccion',select.rows)
+        }}
+       
         
       />
 
-     
+    <h1>{select}</h1>
     </div>
   );
 };

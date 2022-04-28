@@ -1,24 +1,31 @@
 
-import { Checkbox, selectRow } from '@mui/material';
+import { allUser } from '../../redux/reducers/user';
 import React from 'react';
 import { useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {mailUsers} from '../../redux/actions/user'
+import {mailUsers} from '../../redux/actions/user';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+
+import TableRow from '@mui/material/TableRow';
+
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button'
+
 
 const FormNewsletter= () => {
-const allMails = useSelector((state)=> state.user.allUser.map((m) => m.mail))
+
+
+const mail = useSelector((state)=> state.user.allUser.map((m) => m.mail))
 const dispatch = useDispatch()
-const [data, setData] = useState(allMails);
-
- 
-
- 
-
-    const [input, setInput] = useState({
-        mail : data,
+const [input, setInput] = useState({
+        mail : '',
         message : ''
     })
 
+    
 
     function handleSubmit(e){
       e.preventDefault();
@@ -26,7 +33,7 @@ const [data, setData] = useState(allMails);
       dispatch(mailUsers(input))
       alert('NewsLetter send')
       setInput({
-          mail:'',
+         mail:'',
           message:''
       })
   }
@@ -37,79 +44,79 @@ const [data, setData] = useState(allMails);
           [e.target.name] : e.target.value
       })
      
+      }
+
+
+
+function handleCheck(e){
+  if(e.target.checked){
+      setInput({
+          ...input,
+           mail: [...input.mail, e.target.value]
+           
+      })
+      
   }
+  console.log('que agarro checks', e.target.value, [...input.mail])
+}
 
 
-//   function handleSelect(e){
-//     if(input.allMails.find((p) => p ===  e.target.value)){
-//        return 
-//     }   
 
-//    setInput({
-//        ...input,
-//        mail: [...input.countries, e.target.value]
-//    })
-   
-// }
+
 
   return (
     <div>
         <h1>Send Newsletter</h1>
         
             <form onSubmit={handleSubmit}>
-                 <div>
-                <label>Emails</label>
-                <input type='email' name='mail'
-                value={input.mail}
-                onChange={handleChange} />
-                </div>
-                 
-                
 
 
-
-                {/* <div >
-                    <label>Users</label>
-                    <select value={input.mail} name='mail' onChange={handleSelect} >
-                    <option selected="true" disabled="">Select Country</option>
-                    { 
-                      allMails.map((m)=>(
-                       <option value={m.name} key={m.id}>{m.mail}</option>)
-                       ) 
-                    }
-                    </select>
-                    
-                       */}
-
-
-                
-                    {/* <div className={Styles.countriesSelected}>
-                    {input.allMails.map(el => 
-                    <div key={el.id}>
-                        <h4>{el}</h4>
-                        <button className="btnDelete" onClick={() => handleDelete(el)}>x</button>
-                    </div>
-                    )}
-                </div> */}
-
-          
-
-
+            <TableContainer >
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableBody>
+             <TableRow >
+             <TableCell align="left">   <input type='checkbox' name='mail' value={mail} onChange={(e)=>handleCheck(e)}  /> Send All User  </TableCell>
+            </TableRow> 
+            
+            {mail?.map((row) => (
+            <TableRow
+              key={row}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+               {/* <label> <input type='checkbox' name='mail' value={m} key={m.mail} onChange={(m)=>handleCheck(m)} /> {m} </label> */}
+              
+              
+              <TableCell align="left"> <label> <input type='checkbox' name='mail' value={row} key={row.mail} onChange={(m)=>handleCheck(m)} /> {row} </label></TableCell>
+           
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
 
 
 
 
                 <div>
-                <label>Messege</label>
+                 <h2>Your messege Here</h2> 
+                
                 <textarea type='text' name='message'  rows='10' cols='100'
                 onChange={handleChange} 
                 value={input.message}/>
+                
                 </div>
 
-                <div>
+                 <div>
                 
-                <input  type="submit" value="Submit"/>
-                </div>
+                <input  type="submit" value="Submit"
+                disabled={
+                  !input.message ||
+                  !input.mail}/>
+                </div> 
+
+
+              
+
 
             </form>
         
