@@ -4,8 +4,15 @@ import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import { searchBooks, showSearchBook } from "../../redux/actions/books";
 import { useSelector, useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  //login
+  const { loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
+  getAccessTokenSilently().then(token => window.localStorage.setItem("tokenAdmin", token));
+  console.log(window.localStorage.getItem("tokenAdmin"));
+  
+  //
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
@@ -44,6 +51,7 @@ const Navbar = () => {
           />
           <Button onClick={onSubmit}>Search</Button>
         </div>
+        <Button onClick={loginWithRedirect}>LogIn</Button>
         <div className="items">
           <div className="item">
             <img
