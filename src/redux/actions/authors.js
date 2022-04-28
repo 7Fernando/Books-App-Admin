@@ -1,4 +1,5 @@
 import axios from "axios";
+import {authorizationAdmin} from "../../helpers/token"
 
 const url = process.env.VITE_BASE_URL;
 
@@ -10,7 +11,7 @@ export const typesAuthors = {
 export const getAuthors = () => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`${url}/author`);
+      const { data } = await axios.get(`${url}/author`,authorizationAdmin());
       return dispatch({
         type: typesAuthors.GET_ALL_AUTHORS,
         payload: data,
@@ -24,7 +25,7 @@ export const getAuthors = () => {
 export const getAuthorsBook = (name) => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`${url}/author/S?name=${name}`);
+      const { data } = await axios.get(`${url}/author/S?name=${name}`,authorizationAdmin());
       return dispatch({
         type: typesAuthors.GET_AUTHORS_BOOK,
         payload: data.book,

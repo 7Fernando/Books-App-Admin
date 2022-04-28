@@ -1,18 +1,7 @@
 import axios from "axios";
-
+import {authorizationAdmin} from "../../helpers/token"
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const token = window.localStorage.getItem("token");
 
-const user = localStorage.getItem("user");
-const config = {
-  headers: {
-    Authorization: token,
-  },
-};
-
-const authorizationAdmin = {
-  headers: { authorization: `Bearer ${token}`, user: user },
-};
 
 // const authorizationAdmin= {
 //   headers: {
@@ -45,7 +34,7 @@ export const getUsers = () => {
     return async (dispatch) => {
       const { data } = await axios.get(
         "http://localhost:3001/api/users",
-        authorizationAdmin
+        authorizationAdmin()
       );
       console.log("data", data);
       return dispatch({
@@ -61,7 +50,7 @@ export const getUsers = () => {
 export const postUser = (user) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:3001/api/users", user, authorizationAdmin)
+      .post("http://localhost:3001/api/users", user, authorizationAdmin())
       .then((response) => {
         dispatch({
           type: typesUser.POST_USER,
@@ -78,7 +67,7 @@ export const getUserById = (id) => {
     return async (dispatch) => {
       const { data } = await axios.get(
         `http://localhost:3001/api/users/${id}`,
-        authorizationAdmin
+        authorizationAdmin()
       );
       return dispatch({
         type: typesUser.GET_USER_BY_ID,
@@ -94,7 +83,7 @@ export const deleteUser = (id) => {
     return async (dispatch) => {
       const { data } = await axios.delete(
         `http://localhost:3001/api/users/admin/${id}`,
-        authorizationAdmin
+        authorizationAdmin()
       );
       return dispatch({
         type: typesUser.DELETE_USER,
@@ -113,7 +102,7 @@ export const mailUsers = (mail, message) => {
         "http://localhost:3001/api/users/admin/mail",
         mail,
         message,
-        authorizationAdmin
+        authorizationAdmin()
       )
 
       .then((response) => {
