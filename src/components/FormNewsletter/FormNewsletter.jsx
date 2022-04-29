@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mailUsers } from "../../redux/actions/user";
 
+
 const FormNewsletter = () => {
   const checkboxUserMail = useSelector((state) =>
     state.user.userMail.map((m) => m.mail)
