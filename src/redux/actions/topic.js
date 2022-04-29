@@ -10,7 +10,7 @@ export const typesTopics = {
 export const getTopic = () => {
   try {
     return async (dispatch) => {
-      const { data } = await axios.get(`${url}/topic`);
+      const { data } = await axios.get(`${url}/topic`,authorizationAdmin());
       return dispatch({
         type: typesTopics.GET_ALL_TOPIC,
         payload: data,

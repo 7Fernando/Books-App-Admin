@@ -13,6 +13,7 @@ import "./theme/dark.scss";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
