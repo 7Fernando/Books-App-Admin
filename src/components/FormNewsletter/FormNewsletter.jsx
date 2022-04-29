@@ -70,7 +70,6 @@ function handleCheck(e){
         
             <form onSubmit={handleSubmit}>
 
-
             <TableContainer >
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableBody>
@@ -113,10 +112,6 @@ function handleCheck(e){
                   !input.message ||
                   !input.mail}/>
                 </div> 
-
-
-              
-
 
             </form>
         
