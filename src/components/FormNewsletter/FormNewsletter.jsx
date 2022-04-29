@@ -62,8 +62,6 @@ function handleCheck(e){
 
 
 
-
-
   return (
     <div>
         <h1>Send Newsletter</h1>
@@ -116,7 +114,7 @@ function handleCheck(e){
             </form>
         
     </div>
-  )
-}
+  );
+};
 
-export default FormNewsletter
+export default FormNewsletter;
