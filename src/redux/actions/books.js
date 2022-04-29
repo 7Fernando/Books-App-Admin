@@ -1,19 +1,5 @@
 import axios from "axios";
-
-//const url = process.env.VITE_BASE_URL;
-
-const token = window.localStorage.getItem("token");
-
-const user = localStorage.getItem("user");
-const config = {
-  headers: {
-    Authorization: token,
-  },
-};
-
-const authorizationAdmin = {
-  headers: { authorization: `Bearer ${token}`, user: user },
-};
+import {authorizationAdmin} from "../../helpers/token"
 
 export const typesBooks = {
   GET_ALL_BOOKS: "GET_ALL_BOOKS",
@@ -33,7 +19,7 @@ export const getBooksAdmin = () => {
     return async (dispatch) => {
       const { data } = await axios.get(
         "http://localhost:3001/api/books/user/admin",
-        authorizationAdmin
+        authorizationAdmin()
       );
       return dispatch({
         type: typesBooks.GET_ALL_BOOKS,
@@ -50,7 +36,7 @@ export const searchBooks = (search) => {
     try {
       const { data } = await axios.get(
         `http://localhost:3001/api/books/user/admin?name=${search}`,
-        authorizationAdmin
+        authorizationAdmin()
       );
       return dispatch({
         type: typesBooks.SEARCH_BOOKS,
@@ -73,7 +59,7 @@ export const getBookDetails = (id) => {
     return async (dispatch) => {
       const { data } = await axios.get(
         `http://localhost:3001/api/books/user/admin/${id}`,
-        authorizationAdmin
+        authorizationAdmin()
       );
       return dispatch({
         type: typesBooks.GET_BOOK_DETAILS,
@@ -134,7 +120,7 @@ export const showSearchBook = (payload) => {
 export const postBook = (payload) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:3001/api/books", payload)
+      .post("http://localhost:3001/api/books", payload , authorizationAdmin())
       .then((response) => {
         dispatch({
           type: typesBooks.POST_BOOK,
@@ -150,7 +136,7 @@ export const postBook = (payload) => {
 export const deleteBook = (id) => {
   return (dispatch) => {
     return axios
-      .delete(`http://localhost:3001/api/books/user/admin/${id}`)
+      .delete(`http://localhost:3001/api/books/user/admin/${id}`,authorizationAdmin())
       .then((response) => {
         dispatch({
           type: typesBooks.DELETE_BOOK,
