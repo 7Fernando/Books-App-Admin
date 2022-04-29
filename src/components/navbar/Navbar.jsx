@@ -4,12 +4,29 @@ import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import { searchBooks, showSearchBook } from "../../redux/actions/books";
 import { useSelector, useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
+  const { logout, loginWithRedirect, isLoading, getAccessTokenSilently, user } =
+    useAuth0();
 
   const books = useSelector((state) => state.books.searchBook);
+
+  useEffect(() => {
+    if (!isLoading) {
+      console.log(user);
+      getAccessTokenSilently().then((r) => localStorage.setItem("token", r));
+      localStorage.setItem("user", user?.email);
+    }
+  }, [isLoading]);
+
+  const handleLogout = () => {
+    logout();
+    localStorage.removeItem("user")
+    localStorage.removeItem("token")
+  }
 
   useEffect(() => {
     books?.length > 0
@@ -22,11 +39,11 @@ const Navbar = () => {
   };
 
   const onSubmit = (e) => {
-    if(search !== ''){
+    if (search !== "") {
       e.preventDefault();
       dispatch(searchBooks(search));
       setSearch("");
-    }else{
+    } else {
       alert("Please enter a book name");
     }
   };
@@ -44,6 +61,15 @@ const Navbar = () => {
           />
           <Button onClick={onSubmit}>Search</Button>
         </div>
+        {user ? (
+          <>
+            <Button onClick={handleLogout}>logout</Button>
+          </>
+        ) : (
+          <>
+            <Button onClick={() => loginWithRedirect()}>login</Button>
+          </>
+        )}
         <div className="items">
           <div className="item">
             <img
