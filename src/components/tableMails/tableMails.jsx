@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { getUsers, setUserMail } from "../../redux/actions/user";
 
 const Datatable = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());

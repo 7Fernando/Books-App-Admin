@@ -95,24 +95,23 @@ export const deleteUser = (id) => {
   }
 };
 
-export const mailUsers = (mail, message) => {
-  return (dispatch) => {
-    return axios
-      .post(
-        "http://localhost:3001/api/users/admin/mail",
-        mail,
-        message,
-        authorizationAdmin()
-      )
 
-      .then((response) => {
-        dispatch({
-          type: typesUser.POST_MAIL_USER,
-          payload: response.data,
+  export const mailUsers = (input)=>{
+   
+    return (dispatch) => {
+      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin)
+      
+        .then(response => {
+         
+          dispatch({
+            type: typesUser.POST_MAIL_USER,
+            payload: response.data
+            
+          });
+        },)
+        .catch(error => {
+          throw error;
         });
-      })
-      .catch((error) => {
-        throw error;
-      });
+      
   };
 };
