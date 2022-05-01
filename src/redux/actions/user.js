@@ -99,7 +99,7 @@ export const deleteUser = (id) => {
   export const mailUsers = (input)=>{
    
     return (dispatch) => {
-      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin)
+      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin())
       
         .then(response => {
          
