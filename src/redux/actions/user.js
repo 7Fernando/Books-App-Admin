@@ -84,7 +84,8 @@ export const deleteUser = (id) => {
       const { data } = await axios.delete(
         `http://localhost:3001/api/users/admin/${id}`,
         authorizationAdmin()
-      );
+      )
+        console.log('data con id', id)
       return dispatch({
         type: typesUser.DELETE_USER,
         payload: data,
