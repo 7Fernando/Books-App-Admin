@@ -27,7 +27,7 @@ const Single = () => {
         {/* <Navbar /> */}
         <div className="top">
           <div className="left">
-            <div className="editButton">Change Role</div>
+           
             <h1 className="title">Information</h1>
             <div className="item">
               <img

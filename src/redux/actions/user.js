@@ -50,7 +50,7 @@ export const getUsers = () => {
 export const postUser = (user) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:3001/api/users", user, authorizationAdmin())
+      .post("http://localhost:3001/api/users", user, authorizationAdmin)
       .then((response) => {
         dispatch({
           type: typesUser.POST_USER,
@@ -84,7 +84,8 @@ export const deleteUser = (id) => {
       const { data } = await axios.delete(
         `http://localhost:3001/api/users/admin/${id}`,
         authorizationAdmin()
-      );
+      )
+        console.log('data con id', id)
       return dispatch({
         type: typesUser.DELETE_USER,
         payload: data,
