@@ -23,7 +23,7 @@ export const getTopic = () => {
 export const getTopicBook = (name) => {
     try {
       return async (dispatch) => {
-        const { data } = await axios.get(`${url}/topic/S?name=${name}`);
+        const { data } = await axios.get(`${url}/topic/S?name=${name}`,authorizationAdmin());
         console.log(data.book);
         return dispatch({
           type: typesTopics.GET_TOPIC_BOOK,
