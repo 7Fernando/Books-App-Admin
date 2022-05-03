@@ -34,7 +34,7 @@ export const getUsers = () => {
   try {
     return async (dispatch) => {
       const { data } = await axios.get(
-        `${url}/users`,
+        "http://localhost:3001/api/users",
         authorizationAdmin()
       );
       console.log("data", data);

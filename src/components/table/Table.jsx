@@ -31,7 +31,7 @@ const List = () => {
   // const total =
   //   (users.subInfo && users.subInfo[users.subInfo.length - 1].total) / 100;
 
-  
+  Date(1601528702*1000).toLocaleString()
 
   return (
     <TableContainer component={Paper} className="table">
@@ -52,11 +52,11 @@ const List = () => {
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">{row.plan}</TableCell>
-              <TableCell className="tableCell" >{row.subInfo[0].currentEnd}</TableCell>
-              <TableCell className="tableCell" >{row.subInfo[0].currentStart}</TableCell> 
+              <TableCell className="tableCell" >{Date(row.subInfo[0].currentEnd*1000).toLocaleString()}</TableCell>
+              <TableCell className="tableCell" >{Date(row.subInfo[0].currentStart*1000).toLocaleString()}</TableCell> 
              
               <TableCell className="tableCell">
-                <span className={`status ${users.status}`}>${row.subInfo[0].total}</span>
+                <span >UsD {row.subInfo[0].total / 100}</span>
               </TableCell> 
             </TableRow>
            ))}
