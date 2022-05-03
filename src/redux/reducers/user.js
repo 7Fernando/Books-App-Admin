@@ -36,6 +36,12 @@ cases[typesUser.SET_MAIL_USER] = (initialState, payload) => {
     userMail: [...payload],
   };
 };
+
+cases[typesUser.GET_USER] = (initialState, payload) => ({
+  ...initialState,
+  userDetail: {...payload},
+});
+
 export default function userReducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
 }

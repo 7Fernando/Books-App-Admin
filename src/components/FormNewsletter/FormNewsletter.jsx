@@ -8,6 +8,8 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
+import "./FormNewsletter.scss";
+import { Button } from '@mui/material';
 
 
 
@@ -16,6 +18,7 @@ const FormNewsletter= () => {
 
 const mail = useSelector((state)=> state.user.allUser.map((m) => m.mail))
 const dispatch = useDispatch()
+
 const [input, setInput] = useState({
         mail : '',
         message : ''
@@ -45,6 +48,7 @@ const [input, setInput] = useState({
 
 
 function handleCheck(e){
+  
   if(e.target.checked){
       setInput({
           ...input,
@@ -60,29 +64,33 @@ function handleCheck(e){
 
   return (
     <div>
-        <h1>Send Newsletter</h1>
+        <h1 >Send Newsletter</h1>
         
             <form onSubmit={handleSubmit}>
 
-            <TableContainer >
+            <TableContainer className='datatable'>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableBody>
-             <TableRow >
+            <TableBody  >
+             <TableRow className='datatableTitle'>
              <TableCell align="left">   <input type='checkbox' name='mail' value={mail} onChange={(e)=>handleCheck(e)}  /> Send All User  </TableCell>
             </TableRow> 
+
+
+     
             
             {mail?.map((row) => (
             <TableRow
+           
               key={row}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              className='cellWithStatus'
             >
-               {/* <label> <input type='checkbox' name='mail' value={m} key={m.mail} onChange={(m)=>handleCheck(m)} /> {m} </label> */}
               
               
-              <TableCell align="left"> <label> <input type='checkbox' name='mail' value={row} key={row.mail} onChange={(m)=>handleCheck(m)} /> {row} </label></TableCell>
+              <TableCell  align="left" > <label > <input type='checkbox' name='mail' value={row} key={row.mail} onChange={(m)=>handleCheck(m)} /> {row} </label></TableCell>
            
             </TableRow>
-          ))}
+          ))} 
         </TableBody>
       </Table>
     </TableContainer>
@@ -101,11 +109,12 @@ function handleCheck(e){
 
                  <div>
                 
-                <input  type="submit" value="Submit"
+                <Button type="submit" value="Submit" variant="contained"
                 disabled={
                   !input.message ||
-                  !input.mail}/>
-                </div> 
+                  !input.mail}> Send
+                </Button> 
+                </div>
 
             </form>
         

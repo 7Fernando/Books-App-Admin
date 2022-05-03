@@ -16,6 +16,7 @@ export const typesUser = {
   MODIFY_USER: "MODIFY_USER",
   POST_MAIL_USER: "POST_MAIL_USER",
   SET_MAIL_USER: "SET_MAIL_USER",
+  GET_USER:'GET_USER'
 };
 
 export const setUserMail = (data) => {
@@ -78,6 +79,8 @@ export const getUserById = (id) => {
     console.log(error);
   }
 };
+
+
 export const deleteUser = (id) => {
   try {
     return async (dispatch) => {
@@ -85,7 +88,7 @@ export const deleteUser = (id) => {
         `http://localhost:3001/api/users/admin/${id}`,
         authorizationAdmin()
       )
-        console.log('data con id', id)
+      //  console.log('data con id', id)
       return dispatch({
         type: typesUser.DELETE_USER,
         payload: data,
@@ -116,3 +119,23 @@ export const deleteUser = (id) => {
       
   };
 };
+
+
+export const getUserByMail = (email) => {
+  return (dispatch) => {
+    return axios
+      .get(`http://localhost:3001/api/users/admin/mail/${email}`,  authorizationAdmin())
+      .then((response) => {
+        dispatch({
+          
+          type: typesUser.GET_USER,
+          payload: response.data,
+         
+        } ); //  console.log('res', response)
+      } )
+      .catch((error) => {
+        throw error;
+      });
+  };
+};
+
