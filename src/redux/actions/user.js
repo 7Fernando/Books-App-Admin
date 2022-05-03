@@ -1,6 +1,6 @@
 import axios from "axios";
 import {authorizationAdmin} from "../../helpers/token"
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const url = process.env.REACT_APP_BASE_URL;
 
 
 // const authorizationAdmin= {
@@ -34,7 +34,7 @@ export const getUsers = () => {
   try {
     return async (dispatch) => {
       const { data } = await axios.get(
-        "http://localhost:3001/api/users",
+        `${url}/users`,
         authorizationAdmin()
       );
       console.log("data", data);

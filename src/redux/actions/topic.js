@@ -1,6 +1,6 @@
 import axios from "axios";
 import {authorizationAdmin} from "../../helpers/token"
-const url = process.env.VITE_BASE_URL;
+const url = process.env.REACT_APP_BASE_URL;
 
 export const typesTopics = {
   GET_ALL_TOPIC:"GET_ALL_TOPIC",
