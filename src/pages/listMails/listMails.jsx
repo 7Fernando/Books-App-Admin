@@ -11,8 +11,7 @@ const List = () => {
     <div className="list">
       <Sidebar />
       <div className="listContainer">
-        {/* <Navbar /> */}
-        {/* <TableMails /> */}
+       
         <FormNewsletter />
       </div>
     </div>

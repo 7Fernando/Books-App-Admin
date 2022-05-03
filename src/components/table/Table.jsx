@@ -24,12 +24,12 @@ const List = () => {
 
 
 
-  const startDate = new Date(
-    users.subInfo && users.subInfo[0].currentStart * 1000
-  );
-  const lastDate = new Date(users.subInfo && users.subInfo[0].currentEnd * 1000);
-  const total =
-    (users.subInfo && users.subInfo[users.subInfo.length - 1].total) / 100;
+  // const startDate = new Date(
+  //   users.subInfo && users.subInfo[0].currentStart * 1000
+  // );
+  // const lastDate = new Date(users.subInfo && users.subInfo[0].currentEnd * 1000);
+  // const total =
+  //   (users.subInfo && users.subInfo[users.subInfo.length - 1].total) / 100;
 
   
 

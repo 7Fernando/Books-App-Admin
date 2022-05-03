@@ -84,16 +84,7 @@ const Datatable = () => {
           </Button>
         </DialogActions>
       </Dialog>
-   
-
-
-
-            {/* <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div> */}
+  
           </div>
         );
       },
