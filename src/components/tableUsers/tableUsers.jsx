@@ -66,9 +66,8 @@ const [data, setData] = useState(allUser);
             </Link>
             {/* <Button  onClick={() => handleDelete(params.row.id)} 
            autoFocus >
-               
             Delete 
-          </Button> */}
+        </Button> */}
            
       <Button  className="deleteButton" variant="outlined" onClick={()=> handleClickOpen(params.row.id)} >
         Delete 

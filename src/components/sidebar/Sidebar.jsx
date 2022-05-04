@@ -5,8 +5,17 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import StoreIcon from "@mui/icons-material/Store";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
+import { getUsers } from "../../redux/actions/user";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
+ const dispach = useDispatch()
+
+ useEffect(()=>{
+  dispach(getUsers())
+ },[])
+
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
