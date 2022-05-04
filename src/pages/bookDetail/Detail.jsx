@@ -39,7 +39,7 @@ export default function Detail({bookDetails}) {
             <div className="detailItem">
               <span className="itemKey">Topics:</span>
               <span className="itemValue">
-                {bookDetails?.topic?.map((lan) => lan.name)}
+                {bookDetails?.topics?.map((lan) => lan.name)}
               </span>
             </div>
               )

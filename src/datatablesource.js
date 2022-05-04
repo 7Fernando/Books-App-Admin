@@ -54,11 +54,7 @@ export const userColumns = [
     headerName: "Role",
     width: 100,
   },
-  {
-    field: "dislike",
-    headerName: "Dislike",
-    width: 100,
-  },
+  
 ];
 
 

@@ -28,7 +28,7 @@ const Single = () => {
         <div className="top">
           <div className="left">
            
-            <h1 className="title">Information</h1>
+            <h1 className="title">Information User</h1>
             <div className="item">
               <img
                 src={user.picture}
@@ -50,6 +50,14 @@ const Single = () => {
 
                   <span className="itemValue">
                   {user.favorite ? user.favorite.map((b)=> "bookId: " + b.bookId + " ") : "No favorites"}
+                  </span>
+
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Suscription :</span>
+
+                  <span className="itemValue">
+                  {user.plan? user.plan  : "No Suscription"}
                   </span>
 
                 </div>
