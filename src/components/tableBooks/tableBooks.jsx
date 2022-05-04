@@ -7,6 +7,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getBooksAdmin } from "../../redux/actions/books";
 import { deleteBook } from "../../redux/actions/books";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 const Datatable = () => {
@@ -19,14 +25,28 @@ const Datatable = () => {
   const allBooks = useSelector((state) => state.books.allBooks);
 
   const [data, setData] = useState(allBooks);
+  const [open, setOpen] =useState(false)
+  const [id, setId] = useState (0)
 
   useEffect(() => {
     setData(allBooks);
   }, [allBooks]);
 
+
+
+  const handleClickOpen = (id) => {
+    setOpen(true);
+    setId(id)
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleDelete = (id) => {
+    dispatch(deleteBook(id))
     setData(data.filter((item) => item.id !== id));
-    dispatch(deleteBook(id));
+    setOpen(false)
+    console.log("que id borra", id)
   };
 
   const actionColumn = [
@@ -40,12 +60,31 @@ const Datatable = () => {
             <Link to={`/books/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
+            <Button  className="deleteButton" variant="outlined" onClick={()=> handleClickOpen(params.row.id)}>
+        Delete
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Delete Book
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+          The record will be permanently deleted.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Back</Button>
+          <Button  onClick={() => handleDelete(id)} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+  
           </div>
         );
       },

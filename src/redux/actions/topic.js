@@ -1,6 +1,6 @@
 import axios from "axios";
 import {authorizationAdmin} from "../../helpers/token"
-const url = process.env.VITE_BASE_URL;
+const url = process.env.REACT_APP_BASE_URL;
 
 export const typesTopics = {
   GET_ALL_TOPIC:"GET_ALL_TOPIC",
@@ -23,7 +23,7 @@ export const getTopic = () => {
 export const getTopicBook = (name) => {
     try {
       return async (dispatch) => {
-        const { data } = await axios.get(`${url}/topic/S?name=${name}`);
+        const { data } = await axios.get(`${url}/topic/S?name=${name}`,authorizationAdmin());
         console.log(data.book);
         return dispatch({
           type: typesTopics.GET_TOPIC_BOOK,

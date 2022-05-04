@@ -1,6 +1,6 @@
 import axios from "axios";
 import {authorizationAdmin} from "../../helpers/token"
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const url = process.env.REACT_APP_BASE_URL;
 
 
 // const authorizationAdmin= {
@@ -16,6 +16,7 @@ export const typesUser = {
   MODIFY_USER: "MODIFY_USER",
   POST_MAIL_USER: "POST_MAIL_USER",
   SET_MAIL_USER: "SET_MAIL_USER",
+  GET_USER:'GET_USER'
 };
 
 export const setUserMail = (data) => {
@@ -50,7 +51,7 @@ export const getUsers = () => {
 export const postUser = (user) => {
   return (dispatch) => {
     return axios
-      .post("http://localhost:3001/api/users", user, authorizationAdmin())
+      .post("http://localhost:3001/api/users", user, authorizationAdmin)
       .then((response) => {
         dispatch({
           type: typesUser.POST_USER,
@@ -78,13 +79,16 @@ export const getUserById = (id) => {
     console.log(error);
   }
 };
+
+
 export const deleteUser = (id) => {
   try {
     return async (dispatch) => {
       const { data } = await axios.delete(
         `http://localhost:3001/api/users/admin/${id}`,
         authorizationAdmin()
-      );
+      )
+      //  console.log('data con id', id)
       return dispatch({
         type: typesUser.DELETE_USER,
         payload: data,
@@ -99,7 +103,7 @@ export const deleteUser = (id) => {
   export const mailUsers = (input)=>{
    
     return (dispatch) => {
-      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin)
+      return axios.post('http://localhost:3001/api/users/admin/mail',input, authorizationAdmin())
       
         .then(response => {
          
@@ -115,3 +119,23 @@ export const deleteUser = (id) => {
       
   };
 };
+
+
+export const getUserByMail = (email) => {
+  return (dispatch) => {
+    return axios
+      .get(`http://localhost:3001/api/users/admin/mail/${email}`,  authorizationAdmin())
+      .then((response) => {
+        dispatch({
+          
+          type: typesUser.GET_USER,
+          payload: response.data,
+         
+        } ); //  console.log('res', response)
+      } )
+      .catch((error) => {
+        throw error;
+      });
+  };
+};
+
