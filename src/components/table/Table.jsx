@@ -24,12 +24,6 @@ const List = () => {
 
 
 
-  // const startDate = new Date(
-  //   users.subInfo && users.subInfo[0].currentStart * 1000
-  // );
-  // const lastDate = new Date(users.subInfo && users.subInfo[0].currentEnd * 1000);
-  // const total =
-  //   (users.subInfo && users.subInfo[users.subInfo.length - 1].total) / 100;
 
   Date(1601528702*1000).toLocaleString()
 
@@ -47,16 +41,16 @@ const List = () => {
           </TableRow> 
         </TableHead>
         <TableBody>
-           {users.map((row)=> (
+           {users?.map((row)=> (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">{row.plan}</TableCell>
-              <TableCell className="tableCell" >{Date(row.subInfo[0].currentEnd*1000).toLocaleString()}</TableCell>
-              <TableCell className="tableCell" >{Date(row.subInfo[0].currentStart*1000).toLocaleString()}</TableCell> 
+              <TableCell className="tableCell" >{Date(row.subInfo[0]?.currentEnd*1000).toLocaleString()}</TableCell>
+              <TableCell className="tableCell" >{Date(row.subInfo[0]?.currentStart*1000).toLocaleString()}</TableCell> 
              
               <TableCell className="tableCell">
-                <span >UsD {row.subInfo[0].total / 100}</span>
+                <span >UsD {row.subInfo[0]?.total / 100}</span>
               </TableCell> 
             </TableRow>
            ))}

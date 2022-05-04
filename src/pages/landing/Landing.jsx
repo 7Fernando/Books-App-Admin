@@ -29,6 +29,7 @@ export default function Landing() {
               alignItems: 'center',
             }}
           >
+
             <Avatar sx={{ m: 7, bgcolor: '#8561c5'}}>
               <AdminPanelSettings />
             </Avatar>
@@ -41,6 +42,7 @@ export default function Landing() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, bgcolor: "#8561c5"} }
                 onClick={() => loginWithRedirect()}
+
               >
                 Sign In
               </Button>
