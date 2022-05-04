@@ -29,7 +29,8 @@ export default function Landing() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 7, bgcolor: '#81c784'}}>
+
+            <Avatar sx={{ m: 7, bgcolor: '#8561c5'}}>
               <AdminPanelSettings />
             </Avatar>
             <Typography component="h2" variant="h3">
@@ -39,8 +40,9 @@ export default function Landing() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: '#81c784'} }
-                onClick={() => loginWithRedirect({returnTo: window.location.assign("http://localhost:3002/#/home")})}
+                sx={{ mt: 3, mb: 2, bgcolor: "#8561c5"} }
+                onClick={() => loginWithRedirect()}
+
               >
                 Sign In
               </Button>
