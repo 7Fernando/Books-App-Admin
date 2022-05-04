@@ -9,12 +9,14 @@ export const initialState = {
 
 const cases = {};
 
-cases[typesUser.GET_ALL_USERS] = (initialState, payload) => ({
+cases[typesUser.GET_ALL_USERS] = (initialState, payload) =>{
+  const filtered = payload.filter((user)=> user.plan != "NOT_SUBSCRIBED");
+  return ({
   ...initialState,
-  allUser: [...payload],
+  allUser: [...filtered],
 
   bkUser: [...payload],
-});
+})};
 
 cases[typesUser.POST_USER] = (initialState, payload) => ({
   ...initialState,

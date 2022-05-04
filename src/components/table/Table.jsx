@@ -41,16 +41,16 @@ const List = () => {
           </TableRow> 
         </TableHead>
         <TableBody>
-           {users.map((row)=> (
+           {users?.map((row)=> (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">{row.plan}</TableCell>
-              <TableCell className="tableCell" >{Date(row.subInfo[0].currentEnd*1000).toLocaleString()}</TableCell>
-              <TableCell className="tableCell" >{Date(row.subInfo[0].currentStart*1000).toLocaleString()}</TableCell> 
+              <TableCell className="tableCell" >{Date(row.subInfo[0]?.currentEnd*1000).toLocaleString()}</TableCell>
+              <TableCell className="tableCell" >{Date(row.subInfo[0]?.currentStart*1000).toLocaleString()}</TableCell> 
              
               <TableCell className="tableCell">
-                <span >UsD {row.subInfo[0].total / 100}</span>
+                <span >UsD {row.subInfo[0]?.total / 100}</span>
               </TableCell> 
             </TableRow>
            ))}
