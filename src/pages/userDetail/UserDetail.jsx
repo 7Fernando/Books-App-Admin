@@ -4,7 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-
+import {Link} from 'react-router-dom'
  import { useDispatch, useSelector } from "react-redux";
   import { getUserById} from "../../redux/actions/user";
   import { useEffect } from "react";
@@ -16,10 +16,17 @@ const Single = () => {
     const dispatch = useDispatch();
     const id = useParams().userId;
     const user = useSelector((state) => state.user.userDetail);
+    
    
+
+
     useEffect(() => {
       dispatch(getUserById(id));
-    }, [dispatch,id]);
+    }, [dispatch,id, user]);
+
+ 
+
+
   return (
     <div className="single">
       <Sidebar />
@@ -27,7 +34,7 @@ const Single = () => {
         {/* <Navbar /> */}
         <div className="top">
           <div className="left">
-           
+          
             <h1 className="title">Information User</h1>
             <div className="item">
               <img
@@ -41,10 +48,11 @@ const Single = () => {
                   <span className="itemKey">Email:</span>
                   <span className="itemValue">{user.mail}</span>
                 </div>
-                <div className="detailItem">
+                 <div className="detailItem">
                   <span className="itemKey">Role:</span>
                   <span className="itemValue">{user.role}</span>
-                </div>
+              
+                </div>  
                 <div className="detailItem">
                   <span className="itemKey">Favorites:</span>
 

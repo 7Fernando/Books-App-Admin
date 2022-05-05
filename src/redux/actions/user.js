@@ -16,7 +16,8 @@ export const typesUser = {
   MODIFY_USER: "MODIFY_USER",
   POST_MAIL_USER: "POST_MAIL_USER",
   SET_MAIL_USER: "SET_MAIL_USER",
-  GET_USER:'GET_USER'
+  GET_USER:'GET_USER',
+  PUT_USER: 'PUT_USER'
 };
 
 export const setUserMail = (data) => {
@@ -37,7 +38,7 @@ export const getUsers = () => {
         "http://localhost:3001/api/users",
         authorizationAdmin()
       );
-      console.log("data", data);
+     // console.log("data", data);
       return dispatch({
         type: typesUser.GET_ALL_USERS,
         payload: data,
@@ -133,6 +134,25 @@ export const getUserByMail = (email) => {
          
         } ); //  console.log('res', response)
       } )
+      .catch((error) => {
+        throw error;
+      });
+  };
+};
+
+export const changeRol = (id) => {
+  return (dispatch) => {
+    return axios
+      .put('http://localhost:3001/api/users/admin/modify',{id},  authorizationAdmin())
+      
+      .then((response) => {
+        dispatch({
+          
+          type: typesUser.PUT_USER,
+          payload: response.data,
+         
+        } );  console.log('res', response.data)
+      })
       .catch((error) => {
         throw error;
       });

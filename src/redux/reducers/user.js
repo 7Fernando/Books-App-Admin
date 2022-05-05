@@ -44,6 +44,12 @@ cases[typesUser.GET_USER] = (initialState, payload) => ({
   userDetail: {...payload},
 });
 
+cases[typesUser.PUT_USER] = (initialState, payload) => ({
+  ...initialState,
+  userDetail: {...payload},
+ 
+});
+
 export default function userReducer(state = initialState, { type, payload }) {
   return cases[type] ? cases[type](state, payload) : state;
 }

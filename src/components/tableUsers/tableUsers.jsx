@@ -11,22 +11,27 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { deleteUser, getUsers } from "../../redux/actions/user";
+import { deleteUser, getUsers, changeRol , getUserById} from "../../redux/actions/user";
 
 
 
 const Datatable = () => {
+ 
   const [open, setOpen] =useState(false)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
   const allUser = useSelector((state) => state.user.allUser);
+
 const [id, setId] = useState (0)
 const [data, setData] = useState(allUser);
 
+//console.log('id', id)
   useEffect(() => {
-    setData(allUser);
+    dispatch(getUsers());
+    return (()=> 
+    setData(allUser)) 
   }, [allUser]);
 
   const handleClickOpen = (id) => {
@@ -43,9 +48,15 @@ const [data, setData] = useState(allUser);
     dispatch(deleteUser(id));
     setData(data.filter((item) => item.id !== id));
     setOpen(false);
-  
-  
   };
+
+  const handleSelect =(id)=>{
+    dispatch(changeRol(id))
+    dispatch(getUserById(id))
+  }
+
+
+
    
   const actionColumn = [
 
@@ -53,11 +64,25 @@ const [data, setData] = useState(allUser);
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 300,
       renderCell: (params) => {
-       // console.log('param',params)
+      
         return (
+          
+
           <div className="cellAction">
+
+            <div className="viewButton">
+
+       
+        <select labelId="demo-simple-select-label" id="demo-simple-select" onChange={(e)=>handleSelect(params.row.id)}>  
+      
+          <option value="selected" hidden> Change Rol</option>
+          <option value='ADMIN'>ADMIN</option>
+          <option value='USER'>USER</option>
+        </select>
+        </div> 
+
             <Link
               to={`/users/${params.row.id}`}
               style={{ textDecoration: "none" }}
