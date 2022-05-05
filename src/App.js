@@ -40,10 +40,10 @@ function App() {
             <>
               <Route path="/home" element={<Home />}/>
               <Route path="/users" element={<ListUsers />} />
-              <Route path="/:userId" element={<UserDetail />} />
+              <Route path="/users/:userId" element={<UserDetail />} />
               <Route path="/books" element={<ListBooks />} />
-              <Route path="/:bookId" element={<BookDetail />} />
-              <Route path="/new" element={<New title="Add New Book" />}
+              <Route path="/books/:bookId" element={<BookDetail />} />
+              <Route path="/books/new" element={<New title="Add New Book" />}
               />
               <Route path="/newletter" element={<ListMails />} />
             </>

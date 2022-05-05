@@ -25,12 +25,13 @@ const New = () => {
     //e.preventDefault(),
     console.log(input)
     dispatch(postBook(input))
+    alert('New Book Created')
     //sets the "relation" in firebase
     const filename = e.target.title.value
     const colectionRef = app.firestore().collection('bookflixfiles')
     const newUpload = await colectionRef.doc(filename.name).set(
       { name: filename, url: fileUrl, image:imageUrl})
-    alert('New Book Created')
+    
     setInput({
       title: '',
       author: '',
