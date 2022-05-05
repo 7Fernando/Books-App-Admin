@@ -29,7 +29,7 @@ export const bookColumns = [
     width: 100,
   },
 ];
-export const userColumns = [
+export const userColumns =[
   { field: "id", headerName: "ID", width: 100 },
   {
     field: "picture",
@@ -43,7 +43,7 @@ export const userColumns = [
       );
     },
   },
-  { field: "name", headerName: "Name", width: 200 },
+  { field: "name", headerName: "Name", width: 150 },
   {
     field: "mail",
     headerName: "Mail",
@@ -54,6 +54,7 @@ export const userColumns = [
     headerName: "Role",
     width: 100,
   },
+ 
   
 ];
 
