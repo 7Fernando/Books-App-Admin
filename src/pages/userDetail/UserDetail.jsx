@@ -22,7 +22,7 @@ const Single = () => {
 
     useEffect(() => {
       dispatch(getUserById(id));
-    }, [dispatch,id, user]);
+    }, [dispatch,id]);
 
  
 
